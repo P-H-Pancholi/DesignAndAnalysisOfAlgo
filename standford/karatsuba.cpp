@@ -14,7 +14,7 @@ int power(int exp){
 
 
 
-int noOfDigits(int a){
+int noOfDigits(unsigned long long a){
 	// returns number of digits in a
 	if(a == 0){
 		return 1;
@@ -27,7 +27,7 @@ int noOfDigits(int a){
 	return counter;
 }
 
-int multi(int x,int y){
+unsigned long long multi(unsigned long long x,unsigned long long y){
 	// A recursive karatsuba multiplication function
 	// The normal multiplication comprises of n*n single digit multiplication and n single digit addition
 	// This costs O(n*n)
@@ -48,16 +48,16 @@ int multi(int x,int y){
 
 
 		//a is first half digits of x,b is second half digits of x
-		int a = (x / hbase10);
-		int b = (x % hbase10);
+		unsigned long long a = (x / hbase10);
+		unsigned long long b = (x % hbase10);
 		//c is first half digits of y,d is remaining half digits
-		int c = (y / hbase10);
-		int d = y%hbase10;
+		unsigned long long c = (y / hbase10);
+		unsigned long long d = y%hbase10;
 
 		//Recursive calls
-		int firstterm = multi(a,c);
-		//firstterm finds multiplication a*c
-		int thirdterm = multi(b,d);
+		unsigned long long firstterm = multi(a,c);
+		//firstmerm finds multiplication a*c
+		unsigned long long thirdterm = multi(b,d);
 		//thirdterm finds multiplication b*d
 		int secondterm = multi(a+b,c+d);
 		secondterm -= (firstterm + thirdterm);
@@ -72,9 +72,9 @@ int multi(int x,int y){
 
 int main(){
 	cout << "Enter two numbers"<<endl;
-	int a,b;
+	unsigned long long a,b;
 	cin >> a >> b;
-	int ans;
+	unsigned long long ans;
 	ans = multi(a,b);
 	cout << "The answer is "<< ans << endl;
 	return 0;
